@@ -28,6 +28,7 @@ const signInSuccess = function (data) {
   $('#sign-up').addClass('hidden')
   $('#change-password').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
+  $('#add-run').removeClass('hidden')
 }
 
 const signInFailure = function (data) {
@@ -64,6 +65,7 @@ const signOutSuccess = function (data) {
   $('#sign-up').removeClass('hidden')
   $('#change-password').addClass('hidden')
   $('#sign-out').addClass('hidden')
+  $('#add-run').addClass('hidden')
 }
 
 const signOutFailure = function (data) {
