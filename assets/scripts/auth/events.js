@@ -5,7 +5,7 @@ const api = require('./api')
 const ui = require('./ui')
 
 const onSignUp = function (event) {
-  console.log('sign up working')
+  // console.log('sign up working')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signUp(data)
@@ -31,7 +31,7 @@ const onSignIn = function (event) {
 }
 
 const onChangePass = function (event) {
-  console.log('change pass button pressed')
+  // console.log('change pass button pressed')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.changePass(data)
@@ -40,10 +40,21 @@ const onChangePass = function (event) {
   $('#change-password')[0].reset()
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  console.log('sign out pressed')
+  const data = getFormFields(event.target)
+  api.signOut(data)
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+  $('#change-password')[0].reset()
+}
+
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePass)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 module.exports = {

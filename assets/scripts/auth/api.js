@@ -39,8 +39,22 @@ const changePass = function (data) {
   })
 }
 
+const signOut = function (data) {
+  // console.log('api connected')
+  return $.ajax({
+    url: config.apiUrl + '/sign-out',
+    method: 'DELETE',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
-  changePass
+  changePass,
+  signOut
 }
