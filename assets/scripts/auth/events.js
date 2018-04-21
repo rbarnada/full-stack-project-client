@@ -18,7 +18,7 @@ const onSignUp = function (event) {
 }
 
 const onSignIn = function (event) {
-  console.log('sign in working')
+  // console.log('sign in working')
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signIn(data)
@@ -30,9 +30,20 @@ const onSignIn = function (event) {
   $('#sign-in')[0].reset()
 }
 
+const onChangePass = function (event) {
+  console.log('change pass button pressed')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePass(data)
+    .then(ui.changePassSuccess)
+    .catch(ui.changePassFailure)
+  $('#change-password')[0].reset()
+}
+
 const addHandlers = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
+  $('#change-password').on('submit', onChangePass)
 }
 
 module.exports = {
