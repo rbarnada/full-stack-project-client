@@ -22,6 +22,12 @@ const signInSuccess = function (data) {
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = data.user
+
+  // hide/display content
+  $('#sign-in').addClass('hidden')
+  $('#sign-up').addClass('hidden')
+  $('#change-password').removeClass('hidden')
+  $('#sign-out').removeClass('hidden')
 }
 
 const signInFailure = function (data) {
@@ -52,6 +58,12 @@ const signOutSuccess = function (data) {
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = null
+
+  // hide/display content
+  $('#sign-in').removeClass('hidden')
+  $('#sign-up').removeClass('hidden')
+  $('#change-password').addClass('hidden')
+  $('#sign-out').addClass('hidden')
 }
 
 const signOutFailure = function (data) {
