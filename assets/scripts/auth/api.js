@@ -13,6 +13,19 @@ const signUp = function (data) {
   })
 }
 
+const signIn = function (data) {
+  // console.log('api connected')
+  return $.ajax({
+    url: config.apiUrl + '/sign-in',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json'
+    },
+    data
+  })
+}
+
 module.exports = {
-  signUp
+  signUp,
+  signIn
 }

@@ -13,7 +13,7 @@
     </head>
     <body>
       <p id="status-message"></p>
-      <form id="sign-up" class='border'>
+      <form id="sign-up" class='form-field'>
           <fieldset>
             <legend>Sign Up!</legend>
             <input type="text" name="credentials[email]" placeholder="Email">
@@ -23,6 +23,15 @@
             <input type="text" name="credentials[dob]" placeholder="YYYY-MM-DD">
             <input type="text" name="credentials[gender]" placeholder="Gender">
             <input type="submit" value="Sign Up!">
+          </fieldset>
+      </form>
+
+      <form id="sign-in" class='form-field'>
+        <fieldset>
+          <legend>Sign In!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]" placeholder="Password">
+            <input type="submit" value="Sign In!">
           </fieldset>
       </form>
     </body>
