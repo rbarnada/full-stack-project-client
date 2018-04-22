@@ -14,6 +14,30 @@ const addRun = function (data) {
   })
 }
 
+const indexRuns = function () {
+  console.log('api connected')
+  return $.ajax({
+    url: config.apiUrl + `/runs`,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteRun = function () {
+  // console.log('api connected')
+  return $.ajax({
+    url: config.apiUrl + `/runs/` + store.runId,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
-  addRun
+  addRun,
+  indexRuns,
+  deleteRun
 }
