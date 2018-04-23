@@ -32,12 +32,15 @@ const signInSuccess = function (data) {
   $('#index-run').removeClass('hidden')
   $('#update-run').removeClass('hidden')
   $('#delete-run').removeClass('hidden')
+  $('#update-run')[0].reset()
+  $('#add-run')[0].reset()
 
   // Insert colon in time input
   const time = document.getElementsByClassName('time')
   for (let i = 0; i < time.length; i++) {
     time[i].addEventListener('keyup', function (e) {
       const reg = /[0-9]/
+      // this.value = this.value.substr(0, this.value.length - 1)
       // Add colon if string length > 2 and string is a number
       if (this.value.length === 2 && reg.test(this.value)) this.value = this.value + ':'
       // Add colon if string length > 4 and string is a number
