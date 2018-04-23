@@ -1,3 +1,5 @@
+const store = require('../store')
+
 const addRunSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully added run')
@@ -13,8 +15,12 @@ const addRunFailure = function (data) {
 }
 
 const indexRunsSuccess = function (data) {
-  data.runs.forEach(function (loop) {
+  const sorted = data.runs.sort(function (a, b) {
+    return b.id - a.id
+  })
+  sorted.forEach(function (loop) {
     $('#run-display').append(`
+    <div id='delete-run${loop.id}' class='delete-div'>
     <h4>Run: ${loop.id}</h4>
     <p>${loop.distance} miles</p>
     <p>Duration of run: ${loop.time}</p>
@@ -23,6 +29,7 @@ const indexRunsSuccess = function (data) {
         <input type="submit" value="Delete Run!">
       </fieldset>
     </form>
+    </div>
   `)
   })
   console.log(data.runs)
@@ -30,6 +37,10 @@ const indexRunsSuccess = function (data) {
 
 const indexRunsFailure = function (data) {
   $('#status-message').text('An issue occured when getting games')
+}
+
+const deleteRunSuccess = function () {
+  store.fade.fadeOut()
 }
 
 const updateRunSuccess = function (data) {
@@ -50,6 +61,7 @@ module.exports = {
   indexRunsSuccess,
   indexRunsFailure,
   updateRunSuccess,
-  updateRunFailure
+  updateRunFailure,
+  deleteRunSuccess
 
 }

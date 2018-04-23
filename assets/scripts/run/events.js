@@ -28,10 +28,13 @@ const onIndexRuns = function (event) {
 const onDeleteRun = function (event) {
   event.preventDefault()
   store.runId = $(event.target).data().id
+  store.fade = $(event.target).parent()
+  // store.fade = $(event.target).parent().fadeOut()
+  // const currentId = $(event.target)[0].id
   // console.log(store.runId)
   api.deleteRun()
-    // .then($('#index-run').fadeOut())
-    // .catch(ui.updateRunFailure)
+    .then(ui.deleteRunSuccess)
+  // .catch(ui.updateRunFailure)
 }
 
 const onUpdateRun = function (event) {

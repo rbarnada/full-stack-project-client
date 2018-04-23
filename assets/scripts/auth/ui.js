@@ -31,6 +31,7 @@ const signInSuccess = function (data) {
   $('#add-run').removeClass('hidden')
   $('#index-run').removeClass('hidden')
   $('#update-run').removeClass('hidden')
+  $('#delete-run').removeClass('hidden')
 
   // Insert colon in time input
   const time = document.getElementsByClassName('time')
@@ -84,6 +85,7 @@ const signOutSuccess = function (data) {
   $('#add-run').addClass('hidden')
   $('#index-run').addClass('hidden')
   $('#update-run').addClass('hidden')
+  $('.delete-div').addClass('hidden')
 }
 
 const signOutFailure = function (data) {
