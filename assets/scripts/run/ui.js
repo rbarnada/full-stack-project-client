@@ -32,9 +32,24 @@ const indexRunsFailure = function (data) {
   $('#status-message').text('An issue occured when getting games')
 }
 
+const updateRunSuccess = function (data) {
+  $('#status-message').text('Successfully updated run')
+  $('#status-message').css('background-color', 'green')
+  setTimeout(() => $('#status-message').text(''), 3000)
+}
+
+const updateRunFailure = function (data) {
+  $('#status-message').text('Failure updating run')
+  $('#status-message').css('background-color', 'red')
+  setTimeout(() => $('#status-message').text(''), 3000)
+}
+
 module.exports = {
   addRunSuccess,
   addRunFailure,
   indexRunsSuccess,
-  indexRunsFailure
+  indexRunsFailure,
+  updateRunSuccess,
+  updateRunFailure
+
 }

@@ -30,6 +30,7 @@ const signInSuccess = function (data) {
   $('#sign-out').removeClass('hidden')
   $('#add-run').removeClass('hidden')
   $('#index-run').removeClass('hidden')
+  $('#update-run').removeClass('hidden')
 }
 
 const signInFailure = function (data) {
@@ -68,6 +69,7 @@ const signOutSuccess = function (data) {
   $('#sign-out').addClass('hidden')
   $('#add-run').addClass('hidden')
   $('#index-run').addClass('hidden')
+  $('#update-run').addClass('hidden')
 }
 
 const signOutFailure = function (data) {

@@ -16,6 +16,7 @@ const onAddRun = function (event) {
 
 const onIndexRuns = function (event) {
   event.preventDefault()
+  $('#run-display').text('')
   // console.log('button pressed')
   api.indexRuns()
     .then(ui.indexRunsSuccess)
@@ -27,14 +28,26 @@ const onDeleteRun = function (event) {
   store.runId = $(event.target).data().id
   // console.log(store.runId)
   api.deleteRun()
-    .then(function () { console.log('success') })
-    .catch(function () { console.log('failure') })
+    .then(ui.updateRunSuccess)
+    .catch(ui.updateRunFailure)
+}
+
+const onUpdateRun = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  store.updateId = data.run.id
+  console.log('button working')
+  // console.log(store.updateId)
+  api.updateRun(data)
+    .then(ui.updateRunSuccess)
+    .catch(ui.updateRunFailure)
 }
 
 const addHandlers = function () {
   $('#add-run').on('submit', onAddRun)
   $('#index-run').on('submit', onIndexRuns)
   $('#run-display').on('submit', '.delete-run', onDeleteRun)
+  $('#update-run').on('submit', onUpdateRun)
 }
 
 module.exports = {

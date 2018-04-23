@@ -60,6 +60,17 @@
             <input type="submit" value="Log Run!">
         </fieldset>
       </form>
+
+      <form id="update-run" class='form-field hidden'>
+        <fieldset>
+          <legend>Update Run with Id in see all Runs</legend>
+          <input type="number" placeholder="id" name=run[id]>
+          <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance">
+          <input type="text" class="time" name="run[time]" placeholder="Duration">
+          <input type="submit" value="Update Run">
+          </fieldset>
+      </form>
+
       <form id="index-run" class='form-field hidden'>
         <fieldset>
           <legend>See All Runs!</legend>
