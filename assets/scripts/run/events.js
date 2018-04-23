@@ -12,6 +12,8 @@ const onAddRun = function (event) {
   api.addRun(data)
     .then(ui.addRunSuccess)
     .catch(ui.addRunFailure)
+  $('#update-run')[0].reset()
+  $('#add-run')[0].reset()
 }
 
 const onIndexRuns = function (event) {
@@ -28,8 +30,8 @@ const onDeleteRun = function (event) {
   store.runId = $(event.target).data().id
   // console.log(store.runId)
   api.deleteRun()
-    .then(ui.updateRunSuccess)
-    .catch(ui.updateRunFailure)
+    // .then($('#index-run').fadeOut())
+    // .catch(ui.updateRunFailure)
 }
 
 const onUpdateRun = function (event) {
@@ -41,6 +43,8 @@ const onUpdateRun = function (event) {
   api.updateRun(data)
     .then(ui.updateRunSuccess)
     .catch(ui.updateRunFailure)
+  $('#update-run')[0].reset()
+  $('#add-run')[0].reset()
 }
 
 const addHandlers = function () {

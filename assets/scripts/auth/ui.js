@@ -31,6 +31,20 @@ const signInSuccess = function (data) {
   $('#add-run').removeClass('hidden')
   $('#index-run').removeClass('hidden')
   $('#update-run').removeClass('hidden')
+
+  // Insert colon in time input
+  const time = document.getElementsByClassName('time')
+  for (let i = 0; i < time.length; i++) {
+    time[i].addEventListener('keyup', function (e) {
+      const reg = /[0-9]/
+      // Add colon if string length > 2 and string is a number
+      if (this.value.length === 2 && reg.test(this.value)) this.value = this.value + ':'
+      // Add colon if string length > 4 and string is a number
+      if (this.value.length === 5 && reg.test(this.value)) this.value = this.value + ':'
+      // Delete the last digit if string length > 8
+      if (this.value.length > 8) this.value = this.value.substr(0, this.value.length - 1)
+    })
+  }
 }
 
 const signInFailure = function (data) {
