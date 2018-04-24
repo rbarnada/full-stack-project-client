@@ -9,8 +9,8 @@ const addRunSuccess = function (data) {
 
 const addRunFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Improper Format.')
-  $('#status-message').css('background-color', 'red')
+  $('#status-message').text('Improper Format. Please Use HH:MM:SS')
+  $('#status-message').css('background-color', 'pink')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 
@@ -25,7 +25,7 @@ const indexRunsSuccess = function (data) {
     sorted.forEach(function (loop) {
       $('#run-display').append(`
     <div id='delete-run${loop.id}' class='delete-div'>
-    <h4>Run: ${loop.id}</h4>
+    <h4>Run ID: ${loop.id}</h4>
     <p>${loop.distance} miles</p>
     <p>Duration of run: ${loop.time}</p>
     <form data-id="${loop.id}" class='form-field delete-run'>
@@ -41,11 +41,16 @@ const indexRunsSuccess = function (data) {
 // console.log(data.runs)
 
 const indexRunsFailure = function (data) {
-  $('#status-message').text('An issue occured when getting games')
+  $('#status-message').text('An issue occured when getting runs')
+  $('#status-message').css('background-color', 'pink')
 }
 
 const deleteRunSuccess = function () {
   store.fade.fadeOut()
+}
+const deleteRunFailure = function (data) {
+  $('#status-message').text('An issue occurred when deleting runs')
+  $('#status-message').css('background-color', 'pink')
 }
 
 const updateRunSuccess = function (data) {
@@ -56,7 +61,7 @@ const updateRunSuccess = function (data) {
 
 const updateRunFailure = function (data) {
   $('#status-message').text('Failure updating run')
-  $('#status-message').css('background-color', 'red')
+  $('#status-message').css('background-color', 'pink')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 
@@ -67,6 +72,7 @@ module.exports = {
   indexRunsFailure,
   updateRunSuccess,
   updateRunFailure,
-  deleteRunSuccess
+  deleteRunSuccess,
+  deleteRunFailure
 
 }
