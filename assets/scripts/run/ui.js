@@ -10,9 +10,9 @@ const addRunSuccess = function (data) {
 
 const addRunFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Improper Format. Please Use HH:MM:SS')
+  $('#status-message').text('Improper input. Make sure to fill all field and use HH:MM:SS')
   $('#status-message').css('background-color', 'pink')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  setTimeout(() => $('#status-message').text(''), 5000)
 }
 
 const indexRunsSuccess = function (data) {
