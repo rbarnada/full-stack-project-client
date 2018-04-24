@@ -34,7 +34,7 @@ const onDeleteRun = function (event) {
   // console.log(store.runId)
   api.deleteRun()
     .then(ui.deleteRunSuccess)
-  // .catch(ui.updateRunFailure)
+    .catch(ui.deleteRunFailure)
 }
 
 const onUpdateRun = function (event) {
