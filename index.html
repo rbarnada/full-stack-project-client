@@ -22,7 +22,7 @@
             <input type="password" name="credentials[password]" placeholder="Password">
             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
             <input type="text" name="credentials[username]" placeholder="Username">
-            <input type="date" name="credentials[dob]" class="dob "placeholder="YYYY-MM-DD">
+            <input type="date" name="credentials[dob]" class="dob "placeholder="Date of Birth">
             <input type="submit" value="Sign Up!">
           </fieldset>
       </form>
@@ -55,7 +55,7 @@
       <form id="add-run" class='hidden'>
         <fieldset>
           <legend>Log Run!</legend>
-            <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance">
+            <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance (miles)">
             <input type="text" name="run[time]" class="time "placeholder="Duration HH:MM:SS">
             <input type="submit" value="Log Run!">
         </fieldset>
@@ -65,7 +65,7 @@
         <fieldset>
           <legend>Update Run with Id in See All Runs</legend>
           <input type="number" placeholder="id" name=run[id]>
-          <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance">
+          <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance (miles)">
           <input type="text" class="time" name="run[time]" placeholder="Duration HH:MM:SS">
           <input type="submit" value="Update Run">
           </fieldset>

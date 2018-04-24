@@ -2,6 +2,7 @@ const store = require('../store')
 
 const addRunSuccess = function (data) {
   // console.log('successful signup')
+  // $('#index-run').click()
   $('#status-message').text('Successfully added run')
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
@@ -11,7 +12,7 @@ const addRunFailure = function (data) {
   // console.log('signup failure')
   $('#status-message').text('Improper Format. Please Use HH:MM:SS')
   $('#status-message').css('background-color', 'pink')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  setTimeout(() => $('#status-message').text(''), 5000)
 }
 
 const indexRunsSuccess = function (data) {
