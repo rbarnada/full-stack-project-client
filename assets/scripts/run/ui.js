@@ -9,7 +9,7 @@ const addRunSuccess = function (data) {
 
 const addRunFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Failure adding run')
+  $('#status-message').text('Improper Format.')
   $('#status-message').css('background-color', 'red')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
@@ -18,8 +18,12 @@ const indexRunsSuccess = function (data) {
   const sorted = data.runs.sort(function (a, b) {
     return b.id - a.id
   })
-  sorted.forEach(function (loop) {
-    $('#run-display').append(`
+
+  if (sorted.length === 0) {
+    $('#run-display').append(`No runs logged yet`)
+  } else {
+    sorted.forEach(function (loop) {
+      $('#run-display').append(`
     <div id='delete-run${loop.id}' class='delete-div'>
     <h4>Run: ${loop.id}</h4>
     <p>${loop.distance} miles</p>
@@ -31,9 +35,10 @@ const indexRunsSuccess = function (data) {
     </form>
     </div>
   `)
-  })
-  console.log(data.runs)
+    })
+  }
 }
+// console.log(data.runs)
 
 const indexRunsFailure = function (data) {
   $('#status-message').text('An issue occured when getting games')

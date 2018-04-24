@@ -13,6 +13,7 @@
     </head>
     <body>
       <div id='all'>
+        <h1>Run Tracker</h1>
       <p id="status-message"></p>
       <form id="sign-up" class='form-field'>
           <fieldset>
@@ -20,9 +21,8 @@
             <input type="text" name="credentials[email]" placeholder="Email">
             <input type="password" name="credentials[password]" placeholder="Password">
             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-            <input type="text" name="credentials[first_name]" placeholder="First Name">
-            <input type="text" name="credentials[dob]" placeholder="YYYY-MM-DD">
-            <input type="text" name="credentials[gender]" placeholder="Gender">
+            <input type="text" name="credentials[username]" placeholder="Username">
+            <input type="date" name="credentials[dob]" class="dob "placeholder="YYYY-MM-DD">
             <input type="submit" value="Sign Up!">
           </fieldset>
       </form>
@@ -56,7 +56,7 @@
         <fieldset>
           <legend>Log Run!</legend>
             <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance">
-            <input type="text" name="run[time]" class="time "placeholder="Duration">
+            <input type="text" name="run[time]" class="time "placeholder="Duration HH:MM:SS">
             <input type="submit" value="Log Run!">
         </fieldset>
       </form>
@@ -66,7 +66,7 @@
           <legend>Update Run with Id in see all Runs</legend>
           <input type="number" placeholder="id" name=run[id]>
           <input type="number" step="0.01" min="0" name="run[distance]" placeholder="Distance">
-          <input type="text" class="time" name="run[time]" placeholder="Duration">
+          <input type="text" class="time" name="run[time]" placeholder="Duration HH:MM:SS">
           <input type="submit" value="Update Run">
           </fieldset>
       </form>

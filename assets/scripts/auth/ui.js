@@ -1,11 +1,26 @@
 'use strict'
 const store = require('../store')
 
+const dob = document.getElementsByClassName('dob')
+for (let i = 0; i < dob.length; i++) {
+  dob[i].addEventListener('keyup', function (e) {
+    const reg = /[0-9]/
+    // this.value = this.value.substr(0, this.value.length - 1)
+    // Add colon if string length > 2 and string is a number
+    if (this.value.length === 4 && reg.test(this.value)) this.value = this.value + '-'
+    // Add colon if string length > 4 and string is a number
+    if (this.value.length === 7 && reg.test(this.value)) this.value = this.value + '-'
+    // Delete the last digit if string length > 8
+    if (this.value.length > 10) this.value = this.value.substr(0, this.value.length - 1)
+  })
+}
+
 const signUpSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully signed up')
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
+  console.log(data)
 }
 
 const signUpFailure = function (data) {
