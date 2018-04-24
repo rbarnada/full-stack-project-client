@@ -2,6 +2,7 @@ const store = require('../store')
 
 const addRunSuccess = function (data) {
   // console.log('successful signup')
+  // $('#index-run').click()
   $('#status-message').text('Successfully added run')
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
@@ -25,7 +26,7 @@ const indexRunsSuccess = function (data) {
     sorted.forEach(function (loop) {
       $('#run-display').append(`
     <div id='delete-run${loop.id}' class='delete-div'>
-    <h4>Run: ${loop.id}</h4>
+    <h4>Run ID: ${loop.id}</h4>
     <p>${loop.distance} miles</p>
     <p>Duration of run: ${loop.time}</p>
     <form data-id="${loop.id}" class='form-field delete-run'>

@@ -32,9 +32,11 @@ const onDeleteRun = function (event) {
   // store.fade = $(event.target).parent().fadeOut()
   // const currentId = $(event.target)[0].id
   // console.log(store.runId)
-  api.deleteRun()
-    .then(ui.deleteRunSuccess)
-    .catch(ui.deleteRunFailure)
+  if (confirm('Are you sure you want to delete this run')) {
+    api.deleteRun()
+      .then(ui.deleteRunSuccess)
+      .catch(ui.deleteRunFailure)
+  }
 }
 
 const onUpdateRun = function (event) {
