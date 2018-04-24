@@ -1,19 +1,18 @@
 'use strict'
 const store = require('../store')
 
-const dob = document.getElementsByClassName('dob')
-for (let i = 0; i < dob.length; i++) {
-  dob[i].addEventListener('keyup', function (e) {
-    const reg = /[0-9]/
-    // this.value = this.value.substr(0, this.value.length - 1)
-    // Add colon if string length > 2 and string is a number
-    if (this.value.length === 4 && reg.test(this.value)) this.value = this.value + '-'
-    // Add colon if string length > 4 and string is a number
-    if (this.value.length === 7 && reg.test(this.value)) this.value = this.value + '-'
-    // Delete the last digit if string length > 8
-    if (this.value.length > 10) this.value = this.value.substr(0, this.value.length - 1)
-  })
-}
+// const dob = document.getElementsByClassName('dob')
+// for (let i = 0; i < dob.length; i++) {
+//   dob[i].addEventListener('keyup', function (e) {
+//     const reg = /[0-9]/
+//     // Add colon if string length > 2 and string is a number
+//     if (this.value.length === 4 && reg.test(this.value)) this.value = this.value + '-'
+//     // Add colon if string length > 4 and string is a number
+//     if (this.value.length === 7 && reg.test(this.value)) this.value = this.value + '-'
+//     // Delete the last digit if string length > 8
+//     if (this.value.length > 10) this.value = this.value.substr(0, this.value.length - 1)
+//   })
+// }
 
 const signUpSuccess = function (data) {
   // console.log('successful signup')
@@ -50,12 +49,18 @@ const signInSuccess = function (data) {
   $('#update-run')[0].reset()
   $('#add-run')[0].reset()
 
-  // Insert colon in time input
+  // Form validation for time fields
   const time = document.getElementsByClassName('time')
   for (let i = 0; i < time.length; i++) {
     time[i].addEventListener('keyup', function (e) {
       const reg = /[0-9]/
-      // this.value = this.value.substr(0, this.value.length - 1)
+
+      // checks for letter/special characters/spaces/etc and deletes if inputted
+      const value = $(this).val().replace(/[^0-9:]/, '')
+      $(this).val(value)
+
+      // Stops first hour and minute digit from being above 5
+      if ((this.value.length === 4 || this.value.length === 7) && this.value.substr(this.value.length - 1) > 5) this.value = this.value.substr(0, this.value.length - 1)
       // Add colon if string length > 2 and string is a number
       if (this.value.length === 2 && reg.test(this.value)) this.value = this.value + ':'
       // Add colon if string length > 4 and string is a number
