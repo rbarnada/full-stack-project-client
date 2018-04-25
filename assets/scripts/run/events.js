@@ -54,7 +54,7 @@ const onUpdateRun = function (event) {
 
 const addHandlers = function () {
   $('#add-run').on('submit', onAddRun)
-  $('#index-run').on('submit', onIndexRuns)
+  $('#view-runs-tab').on('click', onIndexRuns)
   $('#run-display').on('submit', '.delete-run', onDeleteRun)
   $('#update-run').on('submit', onUpdateRun)
 }

@@ -27,7 +27,8 @@ const indexRunsSuccess = function (data) {
       $('#run-display').append(`
     <div id='delete-run${loop.id}' class='delete-div'>
     <h4>Run ID: ${loop.id}</h4>
-    <p>${loop.distance} miles</p>
+    <p>Date Logged: ${loop.log_date}</p>
+    <p>Number of Miles: ${loop.distance}</p>
     <p>Duration of run: ${loop.time}</p>
     <form data-id="${loop.id}" class='form-field delete-run'>
       <fieldset>
@@ -47,7 +48,7 @@ const indexRunsFailure = function (data) {
 }
 
 const deleteRunSuccess = function () {
-  store.fade.fadeOut()
+  store.fade.fadeOut('slow')
 }
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')

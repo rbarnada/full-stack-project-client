@@ -20,6 +20,7 @@ const signUpSuccess = function (data) {
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
   console.log(data)
+  $('#sign-up-modal').modal('hide')
 }
 
 const signUpFailure = function (data) {
@@ -48,6 +49,11 @@ const signInSuccess = function (data) {
   $('#delete-run').removeClass('hidden')
   $('#update-run')[0].reset()
   $('#add-run')[0].reset()
+  $('#start-modal-button').addClass('hidden')
+  $('#start').modal('hide')
+  $('#change-password-modal-button').removeClass('hidden')
+  $('#add-run-modal-button').removeClass('hidden')
+  $('#tab-nav').removeClass('hidden')
 
   // Form validation for time fields
   const time = document.getElementsByClassName('time')
@@ -73,10 +79,13 @@ const signInSuccess = function (data) {
 
 const signInFailure = function (data) {
   // console.log('signin failure')
-  $('#status-message').text('Failure signing in')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  // $('#status-message').text('Failure signing in')
+  // $('#status-message').css('background-color', 'red')
+  // setTimeout(() => $('#status-message').text(''), 3000)
   // console.log(data.responseText)
+  $('#in-fail-message').text('Incorrect Login. Try Again')
+  $('#in-fail-message').css('background-color', 'pink')
+  setTimeout(() => $('#in-fail-message').text(''), 3000)
 }
 
 const changePassSuccess = function (data) {
@@ -109,6 +118,16 @@ const signOutSuccess = function (data) {
   $('#index-run').addClass('hidden')
   $('#update-run').addClass('hidden')
   $('.delete-div').addClass('hidden')
+  // $('#signup-modal-button').removeClass('hidden')
+  // $('#signin-modal-button').removeClass('hidden')
+  $('#start-modal-button').removeClass('hidden')
+  $('#change-password-modal-button').addClass('hidden')
+  $('#add-run-modal-button').addClass('hidden')
+  $('#view-runs-tab').removeClass('active')
+  $('#view-runs').removeClass('active')
+  $('#log-tab').addClass('active')
+  $('#log-run').addClass('active')
+  $('#tab-nav').addClass('hidden')
 }
 
 const signOutFailure = function (data) {
