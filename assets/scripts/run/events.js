@@ -28,7 +28,7 @@ const onIndexRuns = function (event) {
 const onDeleteRun = function (event) {
   event.preventDefault()
   store.runId = $(event.target).data().id
-  store.fade = $(event.target).parent()
+  store.div_id = $(event.target).parent().parent().parent()
   // store.fade = $(event.target).parent().fadeOut()
   // const currentId = $(event.target)[0].id
   // console.log(store.runId)
@@ -43,6 +43,7 @@ const onUpdateRun = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   store.updateId = data.run.id
+
   console.log('button working')
   // console.log(store.updateId)
   api.updateRun(data)

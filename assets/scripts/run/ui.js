@@ -25,18 +25,30 @@ const indexRunsSuccess = function (data) {
   } else {
     sorted.forEach(function (loop) {
       $('#run-display').append(`
-    <div id='delete-run${loop.id}' class='delete-div'>
+    <div id='run${loop.id}' class='delete-div'>
     <h4>Run ID: ${loop.id}</h4>
     <p>Date Logged: ${loop.log_date}</p>
     <p>Number of Miles: ${loop.distance}</p>
     <p>Duration of run: ${loop.time}</p>
-    <form data-id="${loop.id}" class='form-field delete-run'>
-      <fieldset>
-        <input type="submit" value="Delete Run!">
-      </fieldset>
-    </form>
+    <div class='row'>
+      <div class='col-xs-6'>
+        <form data-id="${loop.id}" class='form-field delete-run'>
+          <fieldset>
+            <input type="submit" class="btn btn-default btn-sm" value="Delete">
+          </fieldset>
+        </form>
+      </div>
+      <div class='col-xs-6'>
+        <button type="button" data-id="${loop.id}" class="btn btn-default btn-sm update-button" data-toggle="modal" data-target="#update-run-modal">Update</button>
+        </div>
     </div>
   `)
+    })
+    $('.update-button').on('click', function (event) {
+      // console.log(event.target)
+      const runUpdate = $(event.target).attr('data-id')
+      $('#run-update-id').val(runUpdate)
+      // console.log(runUpdate)
     })
   }
 }
@@ -48,7 +60,7 @@ const indexRunsFailure = function (data) {
 }
 
 const deleteRunSuccess = function () {
-  store.fade.fadeOut('slow')
+  store.div_id.fadeOut('slow')
 }
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')
@@ -59,6 +71,12 @@ const updateRunSuccess = function (data) {
   $('#status-message').text('Successfully updated run')
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
+  $('.modal').modal('hide')
+  // const updateGreen = '#run' + data.run.id
+  // console.log(updateGreen)
+  // console.log(store.updateId)
+  $('#view-runs-tab').click()
+  $('#run' + data.run.id).css('background-color', 'cyan')
 }
 
 const updateRunFailure = function (data) {

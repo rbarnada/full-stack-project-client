@@ -1,19 +1,6 @@
 'use strict'
 const store = require('../store')
 
-// const dob = document.getElementsByClassName('dob')
-// for (let i = 0; i < dob.length; i++) {
-//   dob[i].addEventListener('keyup', function (e) {
-//     const reg = /[0-9]/
-//     // Add colon if string length > 2 and string is a number
-//     if (this.value.length === 4 && reg.test(this.value)) this.value = this.value + '-'
-//     // Add colon if string length > 4 and string is a number
-//     if (this.value.length === 7 && reg.test(this.value)) this.value = this.value + '-'
-//     // Delete the last digit if string length > 8
-//     if (this.value.length > 10) this.value = this.value.substr(0, this.value.length - 1)
-//   })
-// }
-
 const signUpSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully signed up')
@@ -78,11 +65,6 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (data) {
-  // console.log('signin failure')
-  // $('#status-message').text('Failure signing in')
-  // $('#status-message').css('background-color', 'red')
-  // setTimeout(() => $('#status-message').text(''), 3000)
-  // console.log(data.responseText)
   $('#in-fail-message').text('Incorrect Login. Try Again')
   $('#in-fail-message').css('background-color', 'pink')
   setTimeout(() => $('#in-fail-message').text(''), 3000)
@@ -93,6 +75,7 @@ const changePassSuccess = function (data) {
   $('#status-message').text('Successfully changed password')
   $('#status-message').css('background-color', 'green')
   setTimeout(() => $('#status-message').text(''), 3000)
+  $('.modal').modal('hide')
 }
 
 const changePassFailure = function (data) {

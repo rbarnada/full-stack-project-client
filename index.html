@@ -24,10 +24,10 @@
           </div>
           <div class="col-xs-6">
             <button type="button" class="btn btn-default pull-right nav-button" data-toggle="modal" id='start-modal-button' data-target="#start">Sign Up / Sign In</button>
-            <button type="button" id="change-password-modal-button" class="btn btn-default pull-right nav-button hidden" data-toggle="modal" data-target="#change-pass-modal">Change Password</button>
             <form id="sign-out" class='form-field pull-right nav-button hidden'>
                 <input type="submit" class="btn btn-default" value="Sign Out!">
             </form>
+            <button type="button" id="change-password-modal-button" class="btn btn-default pull-right nav-button hidden" data-toggle="modal" data-target="#change-pass-modal">Change Password</button>
           </div>
         </div>
       </div>
@@ -163,12 +163,6 @@
     </div>
     <!-- CHANGE PASSWORD MODAL END -->
 
-    <!-- <form id="sign-out" class='form-field hidden'>
-      <fieldset>
-        <legend>Sign Out!</legend>
-        <input type="submit" class="btn btn-default" value="Sign Out!">
-      </fieldset>
-    </form> -->
 
 
     <!-- <div class="modal fade" id="add-run-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -194,7 +188,7 @@
       <button type="button" id="add-run-modal-button" class="btn btn-default hidden" data-toggle="modal" data-target="#add-run-modal">Log Run</button> -->
 
 
-    <form id="update-run" class='form-field hidden'>
+    <!-- <form id="update-run" class='form-field hidden'>
       <fieldset>
         <legend>Update Run with Id in see all Runs</legend>
         <input type="number" placeholder="id" name=run[id]>
@@ -202,26 +196,19 @@
         <input type="text" class="time" name="run[time]" placeholder="Duration HH:MM:SS" required>
         <input type="submit" value="Update Run">
       </fieldset>
-    </form>
-
-    <!-- <form id="index-run" class='form-field hidden'>
-      <fieldset>
-        <legend>See All Runs!</legend>
-        <input type="submit" value="See Runs!">
-      </fieldset>
     </form> -->
-    <!-- <p id="run-display"></p> -->
 
+    <!-- TAB BAR START -->
     <div id="tab-nav" class="hidden">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" id="log-tab" class="active"><a href="#log-run" aria-controls="log-run" role="tab" data-toggle="tab">Log Run</a></li>
         <li role="presentation" id="view-runs-tab"><a href="#view-runs" aria-controls="view-runs" role="tab" data-toggle="tab">View Runs</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Update Runs</a></li>
+        <li role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Statistics</a></li>
       </ul>
 
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="log-run">
-          <form id="add-run" class=''>
+        <div role="tabpanel" class="tab-pane row active" id="log-run">
+          <form id="add-run" class='col-xs-6'>
             <fieldset>
               <legend>Log Run</legend>
               <div class="input-group mb-3">
@@ -237,15 +224,78 @@
           </form>
         </div>
         <div role="tabpanel" class="tab-pane" id="view-runs">
+          <!-- <form id="update-run" class='form-field hidden'>
+            <fieldset>
+              <legend>Update Run</legend>
+            <div class="row">
+              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
+                <div class="input-group-addon">ID</div>
+                  <input type="number" placeholder="id" name=run[id] class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
+                <div class="input-group-addon">Distance</div>
+                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
+                <div class="input-group-addon">Duration</div>
+                  <input type="text" name="run[time]" placeholder="HH:MM:SS" class="time form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              </div>
+              <input type="submit" class="btn btn-default" value="Update Run">
+            </fieldset>
+          </form> -->
           <h3>All Runs</h3>
-          <p id="run-display"></p>
+          <div id="run-display"></div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="dfdsf">...</div>
+        <div role="tabpanel" class="tab-pane" id="stats">...</div>
 
       </div>
     </div>
+    <!-- TAB BAR END -->
+
+    <!-- UPDATE MODAL START -->
+    <div class="modal fade" id="update-run-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Update Run</h4>
+        </div>
+        <div class="modal-body">
+          <form id="update-run" class='form-field hidden'>
+            <fieldset>
+            <div class="row">
+              <div class="input-group mb-3 pull-left hidden">
+                <div class="input-group-addon">ID</div>
+                  <input type="number" id="run-update-id" placeholder="id" name=run[id] class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+              <div class="input-group mb-3 col-xs-5 pull-left update-forms">
+                <div class="input-group-addon">Distance</div>
+                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              <div class="input-group mb-3 col-xs-5 pull-left update-forms">
+                <div class="input-group-addon">Duration</div>
+                  <input type="text" name="run[time]" placeholder="HH:MM:SS" class="time form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              </div>
+              <hr>
+              <input type="submit" class="btn btn-default pull-right" value="Update Run">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- UPDATE MODAL END -->
+
   </div>
 </div>
+
+<!-- <form data-id="${loop.id}" class='form-field'>
+  <fieldset>
+    <input type="submit" class="btn btn-default btn-sm" value="Update">
+  </fieldset>
+</form> -->
 
 
 </body>
