@@ -12,9 +12,9 @@ const signUpSuccess = function (data) {
 
 const signUpFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Failure signing up')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  $('#up-error-message').text('Failure signing up')
+  $('#up-error-message').css('background-color', 'pink')
+  setTimeout(() => $('#up-error-message').text(''), 3000)
   // console.log(data.responseText)
 }
 
@@ -52,6 +52,11 @@ const signInSuccess = function (data) {
       const value = $(this).val().replace(/[^0-9:]/, '')
       $(this).val(value)
 
+      // Time form validation. Time cannot exceed 24:00:00
+      // Stops first digit from going higher than 2
+      if ((this.value.length === 1) && this.value.substr(this.value.length - 1) > 2) this.value = this.value.substr(0, this.value.length - 1)
+      // Stops second digit from going higher than 4
+      if ((this.value.length === 2) && this.value.substr(this.value.length - 1) > 4) this.value = this.value.substr(0, this.value.length - 1)
       // Stops first hour and minute digit from being above 5
       if ((this.value.length === 4 || this.value.length === 7) && this.value.substr(this.value.length - 1) > 5) this.value = this.value.substr(0, this.value.length - 1)
       // Add colon if string length > 2 and string is a number
@@ -65,9 +70,9 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (data) {
-  $('#in-fail-message').text('Incorrect Login. Try Again')
-  $('#in-fail-message').css('background-color', 'pink')
-  setTimeout(() => $('#in-fail-message').text(''), 3000)
+  $('#in-error-message').text('Incorrect Login. Try Again')
+  $('#in-error-message').css('background-color', 'pink')
+  setTimeout(() => $('#in-error-message').text(''), 3000)
 }
 
 const changePassSuccess = function (data) {
@@ -80,9 +85,9 @@ const changePassSuccess = function (data) {
 
 const changePassFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Failure changing password')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  $('#pass-error-message').text('Failure changing password')
+  $('#pass-error-message').css('background-color', 'pink')
+  setTimeout(() => $('#pass-error-message').text(''), 3000)
 }
 
 const signOutSuccess = function (data) {

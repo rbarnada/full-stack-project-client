@@ -34,8 +34,11 @@
     </nav>
     <!-- NAVBAR END -->
 
+    <div id="status-message" class="status"></div>
+
     <div class="body-content">
-    <p id="status-message"></p>
+      <!-- <div class="alert alert-success" class="status" id="status-message" role="alert"></div> -->
+
 
     <!-- SIGN UP / SIGN IN MODAL START -->
     <div class="row">
@@ -44,7 +47,7 @@
           <div class="modal-content">
             <div class="modal-body row">
               <!-- SIGN UP FORM STARTS HERE -->
-              <div class="col-xs-6">
+              <div class="col-xs-6 r-border">
                 <form id="sign-up" class='form-field'>
                   <legend>Sign Up</legend>
                   <div class="input-group mb-3">
@@ -69,6 +72,7 @@
                   </div>
                   <hr>
                   <input class="btn btn-default pull-right" type="submit" value="Sign Up!">
+                  <p id="up-error-message"></p>
                 </form>
               </div>
 
@@ -86,6 +90,7 @@
                   </div>
                   <hr>
                   <input type="submit" class='btn btn-default pull-right' value="Sign In!">
+                  <div id="in-error-message"></div>
                 </form>
               </div>
               <!-- SIGN UP FORM ENDS HERE -->
@@ -153,6 +158,7 @@
               </div>
               <hr>
               <input type="submit" class="btn btn-default pull-right" value="Submit">
+              <p id="pass-error-message"></p>
             </form>
           </div>
           <!-- <div class="modal-footer">

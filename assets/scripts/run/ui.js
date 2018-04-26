@@ -76,7 +76,7 @@ const updateRunSuccess = function (data) {
   // console.log(updateGreen)
   // console.log(store.updateId)
   $('#view-runs-tab').click()
-  $('#run' + data.run.id).css('background-color', 'cyan')
+  // setTimeout(() => $('#run' + data.run.id).css('background-color', 'cyan'), 0)
 }
 
 const updateRunFailure = function (data) {
