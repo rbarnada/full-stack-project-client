@@ -4,14 +4,14 @@ const addRunSuccess = function (data) {
   // console.log('successful signup')
   // $('#index-run').click()
   $('#status-message').text('Successfully added run')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 
 const addRunFailure = function (data) {
   // console.log('signup failure')
   $('#status-message').text('Improper input. Make sure to fill all field and use HH:MM:SS')
-  $('#status-message').css('background-color', 'pink')
+  $('#status-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#status-message').text(''), 5000)
 }
 
@@ -56,7 +56,7 @@ const indexRunsSuccess = function (data) {
 
 const indexRunsFailure = function (data) {
   $('#status-message').text('An issue occured when getting runs')
-  $('#status-message').css('background-color', 'pink')
+  $('#status-message').css('background-color', '#F2DEDE')
 }
 
 const deleteRunSuccess = function () {
@@ -64,12 +64,12 @@ const deleteRunSuccess = function () {
 }
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')
-  $('#status-message').css('background-color', 'pink')
+  $('#status-message').css('background-color', '#F2DEDE')
 }
 
 const updateRunSuccess = function (data) {
   $('#status-message').text('Successfully updated run')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   $('.modal').modal('hide')
   // const updateGreen = '#run' + data.run.id
@@ -81,7 +81,7 @@ const updateRunSuccess = function (data) {
 
 const updateRunFailure = function (data) {
   $('#status-message').text('Failure updating run')
-  $('#status-message').css('background-color', 'pink')
+  $('#status-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 

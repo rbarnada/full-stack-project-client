@@ -15,7 +15,7 @@ const addRun = function (data) {
 }
 
 const indexRuns = function () {
-  console.log('api connected')
+  // console.log('api connected')
   return $.ajax({
     url: config.apiUrl + `/runs`,
     method: 'GET',

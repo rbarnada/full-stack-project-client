@@ -27,7 +27,7 @@ const signIn = function (data) {
 }
 
 const changePass = function (data) {
-  console.log('api connected')
+  // console.log('api connected')
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',

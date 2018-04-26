@@ -15,6 +15,7 @@
 
 <body>
   <div class='container'>
+
     <!-- NAVBAR START -->
     <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
       <div class="container">
@@ -25,7 +26,7 @@
           <div class="col-xs-6">
             <button type="button" class="btn btn-default pull-right nav-button" data-toggle="modal" id='start-modal-button' data-target="#start">Sign Up / Sign In</button>
             <form id="sign-out" class='form-field pull-right nav-button hidden'>
-                <input type="submit" class="btn btn-default" value="Sign Out!">
+              <input type="submit" class="btn btn-default" value="Sign Out!">
             </form>
             <button type="button" id="change-password-modal-button" class="btn btn-default pull-right nav-button hidden" data-toggle="modal" data-target="#change-pass-modal">Change Password</button>
           </div>
@@ -34,275 +35,175 @@
     </nav>
     <!-- NAVBAR END -->
 
+    <!-- MESSAGE SPACE  -->
     <div id="status-message" class="status"></div>
 
     <div class="body-content">
-      <!-- <div class="alert alert-success" class="status" id="status-message" role="alert"></div> -->
+      <!-- SIGN UP / SIGN IN MODAL START -->
+      <div class="row">
+        <div class="modal fade" id="start" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-body row">
+                <!-- SIGN UP FORM STARTS HERE -->
+                <div class="col-xs-6 r-border">
+                  <form id="sign-up" class='form-field'>
+                    <legend>Sign Up</legend>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Email</div>
+                      <input type="email" name="credentials[email]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Password</div>
+                      <input type="password" name="credentials[password]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Confirm Password</div>
+                      <input type="password" name="credentials[password_confirmation]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Username</div>
+                      <input type="text" name="credentials[username]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Date of Birth</div>
+                      <input type="date" name="credentials[dob]" class="dob form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <hr>
+                    <input class="btn btn-default pull-right" type="submit" value="Sign Up!">
+                    <p id="up-message"></p>
+                  </form>
+                </div>
 
+                <!-- SIGN IN FORM STARTS HERE -->
+                <div class="col-xs-6">
+                  <form id="sign-in" class='form-field'>
+                    <legend>Sign In</legend>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Email</div>
+                      <input type="email" name="credentials[email]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-addon">Password</div>
+                      <input type="password" name="credentials[password]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <hr>
+                    <input type="submit" class='btn btn-default pull-right' value="Sign In!">
+                    <div id="in-error-message"></div>
+                  </form>
+                </div>
+                <!-- SIGN UP / SIGN IN FORM ENDS HERE -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SIGN UP / SIGN IN END -->
 
-    <!-- SIGN UP / SIGN IN MODAL START -->
-    <div class="row">
-      <div class="modal fade" id="start" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
+      <!-- CHANGE PASSWORD MODAL START -->
+      <div class="modal fade" id="change-pass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-body row">
-              <!-- SIGN UP FORM STARTS HERE -->
-              <div class="col-xs-6 r-border">
-                <form id="sign-up" class='form-field'>
-                  <legend>Sign Up</legend>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Email</div>
-                    <input type="text" name="credentials[email]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Password</div>
-                    <input type="password" name="credentials[password]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Confirm Password</div>
-                    <input type="password" name="credentials[password_confirmation]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Username</div>
-                    <input type="text" name="credentials[username]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Date of Birth</div>
-                    <input type="date" name="credentials[dob]" class="dob form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <hr>
-                  <input class="btn btn-default pull-right" type="submit" value="Sign Up!">
-                  <p id="up-error-message"></p>
-                </form>
-              </div>
-
-              <!-- SIGN IN FORM STARTS HERE -->
-              <div class="col-xs-6">
-                <form id="sign-in" class='form-field'>
-                  <legend>Sign In</legend>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Email</div>
-                    <input type="text" name="credentials[email]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-addon">Password</div>
-                    <input type="password" name="credentials[password]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                  </div>
-                  <hr>
-                  <input type="submit" class='btn btn-default pull-right' value="Sign In!">
-                  <div id="in-error-message"></div>
-                </form>
-              </div>
-              <!-- SIGN UP FORM ENDS HERE -->
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <form id="change-password" class='form-field hidden'>
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">Old Password</div>
+                  <input type="password" name="passwords[old]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">New Password</div>
+                  <input type="password" name="passwords[new]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <hr>
+                <input type="submit" class="btn btn-default pull-right" value="Submit">
+                <p id="pass-error-message"></p>
+              </form>
             </div>
             <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div> -->
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SIGN UP / SIGN IN END -->
-
-    <!-- <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-            </div>
-            <div class="modal-body">
-
-              <div class="col-xs-6">
-              <form id="sign-in" class='form-field'>
-                <div class="input-group mb-3">
-                  <div class="input-group-addon">Email</div>
-                  <input type="text" name="credentials[email]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-addon">Password</div>
-                  <input type="password" name="credentials[password]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-                <input type="submit" class='btn btn-default' value="Sign In!">
-              </form>
-            </div>
-                SIGN IN FORM ENDS HERE
-              <div class="modal-footer">
-                <p class='error-message' id='in-fail-message'></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-default" data-toggle="modal" id='signin-modal-button' data-target="#sign-in-modal">Sign In</button> -->
-
-    <!-- CHANGE PASSWORD MODAL START -->
-    <div class="modal fade" id="change-pass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Change Password</h4>
-          </div>
-          <div class="modal-body">
-            <form id="change-password" class='form-field hidden'>
-              <div class="input-group mb-3">
-                <div class="input-group-addon">Old Password</div>
-                <input type="password" name="passwords[old]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-addon">New Password</div>
-                <input type="password" name="passwords[new]" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <hr>
-              <input type="submit" class="btn btn-default pull-right" value="Submit">
-              <p id="pass-error-message"></p>
-            </form>
-          </div>
-          <!-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div> -->
+          </div>
         </div>
       </div>
-    </div>
-    <!-- CHANGE PASSWORD MODAL END -->
+      <!-- CHANGE PASSWORD MODAL END -->
 
+      <!-- TAB BAR START -->
+      <div id="tab-nav" class="hidden">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" id="log-tab" class="active"><a href="#log-run" aria-controls="log-run" role="tab" data-toggle="tab">Log Run</a></li>
+          <li role="presentation" id="view-runs-tab"><a href="#view-runs" aria-controls="view-runs" role="tab" data-toggle="tab">View Runs</a></li>
+          <!-- <li role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Statistics</a></li> -->
+        </ul>
 
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane row active" id="log-run">
+            <form id="add-run" class='col-xs-6'>
+              <fieldset>
+                <legend>Log Run</legend>
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">Distance</div>
+                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-addon">Duration</div>
+                  <input type="text" name="run[time]" class="form-control time" placeholder="HH:MM:SS" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+                <input type="submit" class='btn btn-default' value="Log Run!">
+              </fieldset>
+            </form>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="view-runs">
 
-    <!-- <div class="modal fade" id="add-run-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <h3>All Runs</h3>
+            <div id="run-display"></div>
+          </div>
+          <!-- <div role="tabpanel" class="tab-pane" id="stats">...</div> -->
+
+        </div>
+      </div>
+      <!-- TAB BAR END -->
+
+      <!-- UPDATE MODAL START -->
+      <div class="modal fade" id="update-run-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Log Run</h4>
+              <h4 class="modal-title" id="myModalLabel">Update Run</h4>
             </div>
             <div class="modal-body">
-              <form id="add-run" class='hidden'>
-                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="Distance (miles)" required>
-                  <input type="text" name="run[time]" class="time " placeholder="Duration HH:MM:SS" required>
-                  <input type="submit" value="Log Run!">
+              <form id="update-run" class='form-field hidden'>
+                <fieldset>
+                  <div class="row">
+                    <div class="input-group mb-3 pull-left hidden">
+                      <div class="input-group-addon">ID</div>
+                      <input type="number" id="run-update-id" placeholder="id" name=run[id] class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <div class="input-group mb-3 col-xs-5 pull-left update-forms">
+                      <div class="input-group-addon">Distance</div>
+                      <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                    <div class="input-group mb-3 col-xs-5 pull-left update-forms">
+                      <div class="input-group-addon">Duration</div>
+                      <input type="text" name="run[time]" placeholder="HH:MM:SS" class="time form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                    </div>
+                  </div>
+                  <hr>
+                  <input type="submit" class="btn btn-default pull-right" value="Update Run">
+                </fieldset>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
-      <button type="button" id="add-run-modal-button" class="btn btn-default hidden" data-toggle="modal" data-target="#add-run-modal">Log Run</button> -->
+      <!-- UPDATE MODAL END -->
 
-
-    <!-- <form id="update-run" class='form-field hidden'>
-      <fieldset>
-        <legend>Update Run with Id in see all Runs</legend>
-        <input type="number" placeholder="id" name=run[id]>
-        <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="Distance (miles)" required>
-        <input type="text" class="time" name="run[time]" placeholder="Duration HH:MM:SS" required>
-        <input type="submit" value="Update Run">
-      </fieldset>
-    </form> -->
-
-    <!-- TAB BAR START -->
-    <div id="tab-nav" class="hidden">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" id="log-tab" class="active"><a href="#log-run" aria-controls="log-run" role="tab" data-toggle="tab">Log Run</a></li>
-        <li role="presentation" id="view-runs-tab"><a href="#view-runs" aria-controls="view-runs" role="tab" data-toggle="tab">View Runs</a></li>
-        <li role="presentation"><a href="#stats" aria-controls="stats" role="tab" data-toggle="tab">Statistics</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane row active" id="log-run">
-          <form id="add-run" class='col-xs-6'>
-            <fieldset>
-              <legend>Log Run</legend>
-              <div class="input-group mb-3">
-                <div class="input-group-addon">Distance</div>
-                <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-addon">Duration</div>
-                <input type="text" name="run[time]" class="form-control time" placeholder="HH:MM:SS" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-              <input type="submit" class='btn btn-default' value="Log Run!">
-            </fieldset>
-          </form>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="view-runs">
-          <!-- <form id="update-run" class='form-field hidden'>
-            <fieldset>
-              <legend>Update Run</legend>
-            <div class="row">
-              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
-                <div class="input-group-addon">ID</div>
-                  <input type="number" placeholder="id" name=run[id] class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                </div>
-              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
-                <div class="input-group-addon">Distance</div>
-                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-              <div class="input-group mb-3 col-xs-3 pull-left update-forms">
-                <div class="input-group-addon">Duration</div>
-                  <input type="text" name="run[time]" placeholder="HH:MM:SS" class="time form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-              </div>
-              <input type="submit" class="btn btn-default" value="Update Run">
-            </fieldset>
-          </form> -->
-          <h3>All Runs</h3>
-          <div id="run-display"></div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="stats">...</div>
-
-      </div>
-    </div>
-    <!-- TAB BAR END -->
-
-    <!-- UPDATE MODAL START -->
-    <div class="modal fade" id="update-run-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Update Run</h4>
-        </div>
-        <div class="modal-body">
-          <form id="update-run" class='form-field hidden'>
-            <fieldset>
-            <div class="row">
-              <div class="input-group mb-3 pull-left hidden">
-                <div class="input-group-addon">ID</div>
-                  <input type="number" id="run-update-id" placeholder="id" name=run[id] class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                </div>
-              <div class="input-group mb-3 col-xs-5 pull-left update-forms">
-                <div class="input-group-addon">Distance</div>
-                  <input type="number" step="0.1" min="0" max="99" name="run[distance]" placeholder="# of miles" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-              <div class="input-group mb-3 col-xs-5 pull-left update-forms">
-                <div class="input-group-addon">Duration</div>
-                  <input type="text" name="run[time]" placeholder="HH:MM:SS" class="time form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
-                </div>
-              </div>
-              <hr>
-              <input type="submit" class="btn btn-default pull-right" value="Update Run">
-            </fieldset>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
-  <!-- UPDATE MODAL END -->
-
-  </div>
-</div>
-
-<!-- <form data-id="${loop.id}" class='form-field'>
-  <fieldset>
-    <input type="submit" class="btn btn-default btn-sm" value="Update">
-  </fieldset>
-</form> -->
-
 
 </body>
 

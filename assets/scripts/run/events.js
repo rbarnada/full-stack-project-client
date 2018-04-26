@@ -44,7 +44,7 @@ const onUpdateRun = function (event) {
   const data = getFormFields(event.target)
   store.updateId = data.run.id
 
-  console.log('button working')
+  // console.log('button working')
   // console.log(store.updateId)
   api.updateRun(data)
     .then(ui.updateRunSuccess)

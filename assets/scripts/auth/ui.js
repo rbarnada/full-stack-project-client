@@ -3,17 +3,17 @@ const store = require('../store')
 
 const signUpSuccess = function (data) {
   // console.log('successful signup')
-  $('#status-message').text('Successfully signed up')
-  $('#status-message').css('background-color', 'green')
+  $('#up-message').text('Successfully signed up. Sign in to continue')
+  $('#up-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
-  console.log(data)
+  // console.log(data)
   $('#sign-up-modal').modal('hide')
 }
 
 const signUpFailure = function (data) {
   // console.log('signup failure')
-  $('#up-error-message').text('Failure signing up')
-  $('#up-error-message').css('background-color', 'pink')
+  $('#up-message').text('Failure signing up')
+  $('#up-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#up-error-message').text(''), 3000)
   // console.log(data.responseText)
 }
@@ -21,7 +21,7 @@ const signUpFailure = function (data) {
 const signInSuccess = function (data) {
   // console.log('successful signin')
   $('#status-message').text('Successfully signed in')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = data.user
 
@@ -71,14 +71,14 @@ const signInSuccess = function (data) {
 
 const signInFailure = function (data) {
   $('#in-error-message').text('Incorrect Login. Try Again')
-  $('#in-error-message').css('background-color', 'pink')
+  $('#in-error-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#in-error-message').text(''), 3000)
 }
 
 const changePassSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully changed password')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   $('.modal').modal('hide')
 }
@@ -86,14 +86,14 @@ const changePassSuccess = function (data) {
 const changePassFailure = function (data) {
   // console.log('signup failure')
   $('#pass-error-message').text('Failure changing password')
-  $('#pass-error-message').css('background-color', 'pink')
+  $('#pass-error-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#pass-error-message').text(''), 3000)
 }
 
 const signOutSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully signed out')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = null
 
@@ -121,7 +121,7 @@ const signOutSuccess = function (data) {
 const signOutFailure = function (data) {
   // console.log('signup failure')
   $('#status-message').text('Failure signing out')
-  $('#status-message').css('background-color', 'red')
+  $('#status-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 
