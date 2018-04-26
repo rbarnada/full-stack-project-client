@@ -56,7 +56,14 @@ const signInSuccess = function (data) {
       // Stops first digit from going higher than 2
       if ((this.value.length === 1) && this.value.substr(this.value.length - 1) > 2) this.value = this.value.substr(0, this.value.length - 1)
       // Stops second digit from going higher than 4
-      if ((this.value.length === 2) && this.value.substr(this.value.length - 1) > 4) this.value = this.value.substr(0, this.value.length - 1)
+      // if ((this.value.length === 2) && ((this.value.substr(this.value.length - 2) === 2 && this.value.substr(this.value.length - 1) > 4))) {
+      //   this.value = this.value.substr(0, this.value.length - 1)
+      // }
+      if (this.value.length === 2) {
+        if (this.value.substr(this.value.length - 2, 2) > 24) {
+          this.value = this.value.substr(0, this.value.length - 1)
+        }
+      }
       // Stops first hour and minute digit from being above 5
       if ((this.value.length === 4 || this.value.length === 7) && this.value.substr(this.value.length - 1) > 5) this.value = this.value.substr(0, this.value.length - 1)
       // Add colon if string length > 2 and string is a number

@@ -59,8 +59,17 @@ const indexRunsFailure = function (data) {
   $('#status-message').css('background-color', '#F2DEDE')
 }
 
-const deleteRunSuccess = function () {
-  store.div_id.fadeOut('slow')
+const deleteRunSuccess = function (data) {
+  store.div_id.fadeOut(500, function () {
+    this.remove()
+  })
+
+  const anyRuns = function () {
+    if ($('.delete-div').length === 1) {
+      $('#run-display').append('No runs logged')
+    }
+  }
+  setTimeout(anyRuns, 500)
 }
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')
