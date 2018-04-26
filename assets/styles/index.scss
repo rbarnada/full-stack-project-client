@@ -1,5 +1,10 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
 
 .hidden {
   display: none;
@@ -15,8 +20,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .navbar-inverse {
-  color: white;
   box-shadow: 0px 3px 5px grey;
+  color: white;
 }
 
 .nav-button {
@@ -45,6 +50,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .input-group {
   margin-bottom: 15px;
+}
+
+#up-message {
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+#in-error-message,
+#pass-error-message {
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
 
 .status {

@@ -50,6 +50,7 @@ const indexRunsSuccess = function (data) {
       // console.log(runUpdate)
     })
   }
+  // console.log(data.runs.forEach())
 }
 // console.log(data.runs)
 

@@ -6,6 +6,7 @@ const signUpSuccess = function (data) {
   $('#up-message').text('Successfully signed up. Sign in to continue')
   $('#up-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#up-message').text(''), 3000)
+  setTimeout(() => $('#up-message').css('background-color', 'white'), 3000)
   // console.log(data)
   $('#sign-up-modal').modal('hide')
 }
@@ -15,6 +16,7 @@ const signUpFailure = function (data) {
   $('#up-message').text('Failure signing up')
   $('#up-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#up-message').text(''), 3000)
+  setTimeout(() => $('#up-message').css('background-color', 'white'), 3000)
   // console.log(data.responseText)
 }
 
@@ -77,6 +79,7 @@ const signInFailure = function (data) {
   $('#in-error-message').text('Incorrect Login. Try Again')
   $('#in-error-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#in-error-message').text(''), 3000)
+  setTimeout(() => $('#in-error-message').css('background-color', 'white'), 3000)
 }
 
 const changePassSuccess = function (data) {
@@ -92,6 +95,7 @@ const changePassFailure = function (data) {
   $('#pass-error-message').text('Failure changing password')
   $('#pass-error-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#pass-error-message').text(''), 3000)
+  setTimeout(() => $('#pass-error-message').css('background-color', 'white'), 3000)
 }
 
 const signOutSuccess = function (data) {
