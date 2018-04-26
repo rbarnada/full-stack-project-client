@@ -10,7 +10,7 @@ const addRunSuccess = function (data) {
 
 const addRunFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Improper input. Make sure to fill all field and use HH:MM:SS')
+  $('#status-message').text('Improper input')
   $('#status-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#status-message').text(''), 5000)
 }
@@ -89,9 +89,10 @@ const updateRunSuccess = function (data) {
 }
 
 const updateRunFailure = function (data) {
-  $('#status-message').text('Improper Input. Complete all fields and Use HH:MM:SS')
-  $('#status-message').css('background-color', '#F2DEDE')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  $('#update-error-message').text('Improper Input')
+  $('#update-error-message').css('background-color', '#F2DEDE')
+  setTimeout(() => $('#update-error-message').text(''), 3000)
+  setTimeout(() => $('#update-error-message').css('background-color', 'white'), 3000)
 }
 
 module.exports = {
