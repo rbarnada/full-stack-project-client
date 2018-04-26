@@ -14,7 +14,7 @@ const signUpFailure = function (data) {
   // console.log('signup failure')
   $('#up-message').text('Failure signing up')
   $('#up-message').css('background-color', '#F2DEDE')
-  setTimeout(() => $('#up-error-message').text(''), 3000)
+  setTimeout(() => $('#up-message').text(''), 3000)
   // console.log(data.responseText)
 }
 
