@@ -26,8 +26,7 @@ const indexRunsSuccess = function (data) {
     sorted.forEach(function (loop) {
       $('#run-display').append(`
     <div id='run${loop.id}' class='delete-div'>
-    <h4>Run ID: ${loop.id}</h4>
-    <p>Date Logged: ${loop.log_date}</p>
+    <h5>Date Logged: ${loop.log_date}</h5>
     <p>Number of Miles: ${loop.distance}</p>
     <p>Duration of run: ${loop.time}</p>
     <div class='row'>
