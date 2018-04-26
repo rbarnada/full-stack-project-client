@@ -28,7 +28,7 @@ const onIndexRuns = function (event) {
 const onDeleteRun = function (event) {
   event.preventDefault()
   store.runId = $(event.target).data().id
-  store.fade = $(event.target).parent()
+  store.div_id = $(event.target).parent().parent().parent()
   // store.fade = $(event.target).parent().fadeOut()
   // const currentId = $(event.target)[0].id
   // console.log(store.runId)
@@ -43,7 +43,8 @@ const onUpdateRun = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   store.updateId = data.run.id
-  console.log('button working')
+
+  // console.log('button working')
   // console.log(store.updateId)
   api.updateRun(data)
     .then(ui.updateRunSuccess)
@@ -54,7 +55,7 @@ const onUpdateRun = function (event) {
 
 const addHandlers = function () {
   $('#add-run').on('submit', onAddRun)
-  $('#index-run').on('submit', onIndexRuns)
+  $('#view-runs-tab').on('click', onIndexRuns)
   $('#run-display').on('submit', '.delete-run', onDeleteRun)
   $('#update-run').on('submit', onUpdateRun)
 }

@@ -42,7 +42,7 @@ const onChangePass = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('sign out pressed')
+  // console.log('sign out pressed')
   const data = getFormFields(event.target)
   api.signOut(data)
     .then(ui.signOutSuccess)
@@ -56,6 +56,10 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePass)
   $('#sign-out').on('submit', onSignOut)
 }
+
+$('.modal').on('hidden.bs.modal', function (e) {
+  $('input[type="email"], input[type="password"], input[type="text"], input[type="date"], input[type="number"], textarea').val('')
+})
 
 module.exports = {
   addHandlers

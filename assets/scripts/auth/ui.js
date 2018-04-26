@@ -1,39 +1,27 @@
 'use strict'
 const store = require('../store')
 
-// const dob = document.getElementsByClassName('dob')
-// for (let i = 0; i < dob.length; i++) {
-//   dob[i].addEventListener('keyup', function (e) {
-//     const reg = /[0-9]/
-//     // Add colon if string length > 2 and string is a number
-//     if (this.value.length === 4 && reg.test(this.value)) this.value = this.value + '-'
-//     // Add colon if string length > 4 and string is a number
-//     if (this.value.length === 7 && reg.test(this.value)) this.value = this.value + '-'
-//     // Delete the last digit if string length > 8
-//     if (this.value.length > 10) this.value = this.value.substr(0, this.value.length - 1)
-//   })
-// }
-
 const signUpSuccess = function (data) {
   // console.log('successful signup')
-  $('#status-message').text('Successfully signed up')
-  $('#status-message').css('background-color', 'green')
+  $('#up-message').text('Successfully signed up. Sign in to continue')
+  $('#up-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
-  console.log(data)
+  // console.log(data)
+  $('#sign-up-modal').modal('hide')
 }
 
 const signUpFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Failure signing up')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  $('#up-message').text('Failure signing up')
+  $('#up-message').css('background-color', '#F2DEDE')
+  setTimeout(() => $('#up-error-message').text(''), 3000)
   // console.log(data.responseText)
 }
 
 const signInSuccess = function (data) {
   // console.log('successful signin')
   $('#status-message').text('Successfully signed in')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = data.user
 
@@ -48,6 +36,11 @@ const signInSuccess = function (data) {
   $('#delete-run').removeClass('hidden')
   $('#update-run')[0].reset()
   $('#add-run')[0].reset()
+  $('#start-modal-button').addClass('hidden')
+  $('#start').modal('hide')
+  $('#change-password-modal-button').removeClass('hidden')
+  $('#add-run-modal-button').removeClass('hidden')
+  $('#tab-nav').removeClass('hidden')
 
   // Form validation for time fields
   const time = document.getElementsByClassName('time')
@@ -59,6 +52,11 @@ const signInSuccess = function (data) {
       const value = $(this).val().replace(/[^0-9:]/, '')
       $(this).val(value)
 
+      // Time form validation. Time cannot exceed 24:00:00
+      // Stops first digit from going higher than 2
+      if ((this.value.length === 1) && this.value.substr(this.value.length - 1) > 2) this.value = this.value.substr(0, this.value.length - 1)
+      // Stops second digit from going higher than 4
+      if ((this.value.length === 2) && this.value.substr(this.value.length - 1) > 4) this.value = this.value.substr(0, this.value.length - 1)
       // Stops first hour and minute digit from being above 5
       if ((this.value.length === 4 || this.value.length === 7) && this.value.substr(this.value.length - 1) > 5) this.value = this.value.substr(0, this.value.length - 1)
       // Add colon if string length > 2 and string is a number
@@ -72,31 +70,30 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (data) {
-  // console.log('signin failure')
-  $('#status-message').text('Failure signing in')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
-  // console.log(data.responseText)
+  $('#in-error-message').text('Incorrect Login. Try Again')
+  $('#in-error-message').css('background-color', '#F2DEDE')
+  setTimeout(() => $('#in-error-message').text(''), 3000)
 }
 
 const changePassSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully changed password')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
+  $('.modal').modal('hide')
 }
 
 const changePassFailure = function (data) {
   // console.log('signup failure')
-  $('#status-message').text('Failure changing password')
-  $('#status-message').css('background-color', 'red')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  $('#pass-error-message').text('Failure changing password')
+  $('#pass-error-message').css('background-color', '#F2DEDE')
+  setTimeout(() => $('#pass-error-message').text(''), 3000)
 }
 
 const signOutSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully signed out')
-  $('#status-message').css('background-color', 'green')
+  $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   store.user = null
 
@@ -109,12 +106,22 @@ const signOutSuccess = function (data) {
   $('#index-run').addClass('hidden')
   $('#update-run').addClass('hidden')
   $('.delete-div').addClass('hidden')
+  // $('#signup-modal-button').removeClass('hidden')
+  // $('#signin-modal-button').removeClass('hidden')
+  $('#start-modal-button').removeClass('hidden')
+  $('#change-password-modal-button').addClass('hidden')
+  $('#add-run-modal-button').addClass('hidden')
+  $('#view-runs-tab').removeClass('active')
+  $('#view-runs').removeClass('active')
+  $('#log-tab').addClass('active')
+  $('#log-run').addClass('active')
+  $('#tab-nav').addClass('hidden')
 }
 
 const signOutFailure = function (data) {
   // console.log('signup failure')
   $('#status-message').text('Failure signing out')
-  $('#status-message').css('background-color', 'red')
+  $('#status-message').css('background-color', '#F2DEDE')
   setTimeout(() => $('#status-message').text(''), 3000)
 }
 
