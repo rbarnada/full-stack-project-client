@@ -55,12 +55,9 @@ const signInSuccess = function (data) {
       // Time form validation. Time cannot exceed 24:00:00
       // Stops first digit from going higher than 2
       if ((this.value.length === 1) && this.value.substr(this.value.length - 1) > 2) this.value = this.value.substr(0, this.value.length - 1)
-      // Stops second digit from going higher than 4
-      // if ((this.value.length === 2) && ((this.value.substr(this.value.length - 2) === 2 && this.value.substr(this.value.length - 1) > 4))) {
-      //   this.value = this.value.substr(0, this.value.length - 1)
-      // }
+      // Stops second digit from going higher than 4 if
       if (this.value.length === 2) {
-        if (this.value.substr(this.value.length - 2, 2) > 24) {
+        if (this.value.substr(this.value.length - 2, 2) > 23) {
           this.value = this.value.substr(0, this.value.length - 1)
         }
       }

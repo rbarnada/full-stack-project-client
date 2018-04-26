@@ -5,6 +5,10 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 const onAddRun = function (event) {
   event.preventDefault()
   // console.log('button pressed')
