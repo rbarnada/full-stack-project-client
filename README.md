@@ -43,4 +43,4 @@ I had originally wanted that on update of a run, the new values would insert and
 ### Links:
 - Wireframes: https://i.imgur.com/lfmvK3n.jpg
 - Run Tracker API: https://github.com/rbarnada/fullstack-backend
-- Deployed API: https://sheltered-waters-67292.herokuapp.com/
+- Deployed API: https://run-tracker-api.herokuapp.com/
