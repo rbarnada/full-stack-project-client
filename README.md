@@ -15,6 +15,8 @@
 - Google Chrome
 
 ---
+### App Description
+This app allows you to log you runs
 
 ### Planning
 For planning, I set up some basic user stories to outline basic functionality as well as a couple details that were more of a strectch goal. My preliminary wireframes helped to guide the process of laying out the site but ultimately I decided to go a different direction than the original plans.

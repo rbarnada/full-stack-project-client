@@ -5,7 +5,7 @@ const signUpSuccess = function (data) {
   // console.log('successful signup')
   $('#up-message').text('Successfully signed up. Sign in to continue')
   $('#up-message').css('background-color', '#E0F0D9')
-  setTimeout(() => $('#status-message').text(''), 3000)
+  setTimeout(() => $('#up-message').text(''), 3000)
   // console.log(data)
   $('#sign-up-modal').modal('hide')
 }
