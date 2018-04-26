@@ -4,6 +4,34 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 body {
   font-family: 'Ubuntu', sans-serif;
+
+
+
+  &.home {
+  background-image: url('../../public/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 100vh;
+}
+}
+
+.welcome {
+  position: relative;
+  display: inline;
+  font-size: 5vw;
+  left: 50%;
+  color: white;
+  text-shadow: 0 0 4px #000;
+}
+
+.welcome-two {
+  position: relative;
+  display: inline;
+  font-size: 5vw;
+  left: 65%;
+  color: white;
+  text-shadow: 0 0 4px #000;
 }
 
 .hidden {
@@ -20,7 +48,7 @@ body {
 }
 
 .navbar-inverse {
-  box-shadow: 0px 3px 5px grey;
+  box-shadow: 0px 3px 5px black;
   color: white;
 }
 

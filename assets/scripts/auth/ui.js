@@ -43,7 +43,9 @@ const signInSuccess = function (data) {
   $('#change-password-modal-button').removeClass('hidden')
   $('#add-run-modal-button').removeClass('hidden')
   $('#tab-nav').removeClass('hidden')
-
+  $('body').removeClass('home')
+  $('.welcome').addClass('hidden')
+  $('.welcome-two').addClass('hidden')
   // Form validation for time fields
   const time = document.getElementsByClassName('time')
   for (let i = 0; i < time.length; i++) {
@@ -101,8 +103,11 @@ const changePassFailure = function (data) {
 const signOutSuccess = function (data) {
   // console.log('successful signup')
   $('#status-message').text('Successfully signed out')
-  $('#status-message').css('background-color', '#E0F0D9')
+  $('#status-message').css('background-color', '#F5F5F5')
+  $('#status-message').css('border', '2px solid #E1E1E8')
   setTimeout(() => $('#status-message').text(''), 3000)
+  setTimeout(() => $('#status-message').css('border', 'none'), 3000)
+  $('body').addClass('home')
   store.user = null
 
   // hide/display content
@@ -114,8 +119,6 @@ const signOutSuccess = function (data) {
   $('#index-run').addClass('hidden')
   $('#update-run').addClass('hidden')
   $('.delete-div').addClass('hidden')
-  // $('#signup-modal-button').removeClass('hidden')
-  // $('#signin-modal-button').removeClass('hidden')
   $('#start-modal-button').removeClass('hidden')
   $('#change-password-modal-button').addClass('hidden')
   $('#add-run-modal-button').addClass('hidden')
@@ -124,6 +127,8 @@ const signOutSuccess = function (data) {
   $('#log-tab').addClass('active')
   $('#log-run').addClass('active')
   $('#tab-nav').addClass('hidden')
+  $('.welcome').removeClass('hidden')
+  $('.welcome-two').removeClass('hidden')
 }
 
 const signOutFailure = function (data) {
