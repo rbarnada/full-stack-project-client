@@ -42,5 +42,6 @@ I had originally wanted that on update of a run, the new values would insert and
 ---
 ### Links:
 - Wireframes: https://i.imgur.com/lfmvK3n.jpg
-- Run Tracker API: https://github.com/rbarnada/fullstack-backend
+- Run Tracker API Repo: https://github.com/rbarnada/fullstack-backend
 - Deployed API: https://run-tracker-api.herokuapp.com/
+- Deployed Client: https://rbarnada.github.io/full-stack-project-client/
