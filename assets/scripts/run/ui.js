@@ -44,10 +44,10 @@ const indexRunsSuccess = function (data) {
   `)
     })
     $('.update-button').on('click', function (event) {
-      // console.log(event.target)
+    // console.log(event.target)
       const runUpdate = $(event.target).attr('data-id')
       $('#run-update-id').val(runUpdate)
-      // console.log(runUpdate)
+    // console.log(runUpdate)
     })
   }
   // console.log(data.runs.forEach())
@@ -64,12 +64,12 @@ const deleteRunSuccess = function (data) {
     this.remove()
   })
 
-  const anyRuns = function () {
-    if ($('.delete-div').length === 1) {
-      $('#run-display').append('No runs logged')
-    }
-  }
-  setTimeout(anyRuns, 500)
+  // const anyRuns = function () {
+  //   if ($('.delete-div').length === 1) {
+  //     $('#run-display').append('No runs logged')
+  //   }
+  // }
+  // setTimeout(anyRuns, 500)
 }
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')
