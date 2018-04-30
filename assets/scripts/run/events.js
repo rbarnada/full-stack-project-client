@@ -53,7 +53,9 @@ const onUpdateRun = function (event) {
   api.updateRun(data)
     .then(ui.updateRunSuccess)
     .catch(ui.updateRunFailure)
-  $('#update-run')[0].reset()
+  $('#update-run').on('submit', function (e) {
+    $('#run-update-distance, #run-update-duration').val('')
+  })
   $('#add-run')[0].reset()
 }
 
