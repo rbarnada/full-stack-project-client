@@ -4,6 +4,24 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
+// Date validation. Checks current date and sets it to the max
+// value of the date input in the date of birth field
+let today = new Date()
+let dd = today.getDate()
+let mm = today.getMonth() + 1 // January is 0!
+const yyyy = today.getFullYear()
+
+if (dd < 10) {
+  dd = '0' + dd
+}
+
+if (mm < 10) {
+  mm = '0' + mm
+}
+
+today = yyyy + '-' + mm + '-' + dd
+$('#dob').attr('max', today)
+
 const onSignUp = function (event) {
   // console.log('sign up working')
   event.preventDefault()
