@@ -23,6 +23,7 @@ const onAddRun = function (event) {
 const onIndexRuns = function (event) {
   event.preventDefault()
   $('#run-display').text('')
+  $('#stat-display').text('')
   // console.log('button pressed')
   api.indexRuns()
     .then(ui.indexRunsSuccess)
@@ -69,7 +70,7 @@ const addHandlers = function () {
   $('#view-runs-tab').on('click', onIndexRuns)
   $('#run-display').on('submit', '.delete-run', onDeleteRun)
   $('#update-run').on('submit', onUpdateRun)
-  // $('#stats-tab').on('click', onStatsDisplay)
+  $('#stats-tab').on('click', onIndexRuns)
 }
 
 module.exports = {

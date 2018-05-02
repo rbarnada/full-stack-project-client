@@ -58,9 +58,11 @@ const indexRunsSuccess = function (data) {
     // STATS PAGE INFO
     if (data.runs.length > 0) {
     // console.log(data.runs)
-      console.log(data.runs)
+      // console.log(data.runs)
       // TOTAL RUNS
-      console.log(`Total Runs: ${data.runs.length}`)
+      $('#stat-display').append(`
+      <p>Total Runs: ${data.runs.length}</p>
+      `)
 
       // TOTAL DISTANCE RAN
       // PULL DISTANCE VALUES FROM OBJECTS AND PUSH TO ARRAY
@@ -74,21 +76,25 @@ const indexRunsSuccess = function (data) {
       console.log(distanceArray)
 
       // GETS TOTAL DISTANCE BY ADDING ARRAY VALUES
-      console.log(distanceArray.reduce(function (acc, val) {
+      const totalDistance = distanceArray.reduce(function (acc, val) {
         return acc + val
-      }))
+      })
+      console.log(totalDistance)
+      $('#stat-display').append(`<p>Total Miles Ran: ${totalDistance}</p>`)
 
       // GETS LONGEST DISTANCE
       const longest = distanceArray.reduce(function (acc, val) {
         return Math.max(acc, val)
       })
       console.log(`Longest run is ${longest} miles`)
+      $('#stat-display').append(`<p>Longest Run: ${longest} miles</p>`)
 
       // GETS SHORTEST DISTANCE
       const shortest = distanceArray.reduce(function (acc, val) {
         return Math.min(acc, val)
       })
       console.log(`Shortest run is ${shortest} miles`)
+      $('#stat-display').append(`<p>Shortest Run: ${shortest} miles</p>`)
 
       // PULL TIME VALUES FROM OBJECTS AND PUSH TO ARRAY
       const timeArray = []
@@ -115,7 +121,9 @@ const indexRunsSuccess = function (data) {
       console.log(addedTime)
       const addedTimeString = addedTime.toString()
       // console.log(addedTimeString)
-      console.log(addedTimeString.replace(/,/g, ':'))
+      const normalizedTime = addedTimeString.replace(/,/g, ':')
+      console.log(normalizedTime)
+      $('#stat-display').append(`<p>Total Time Running: ${normalizedTime}</p>`)
       // console.log(typeof addedTimeString)
       // END TOTAL DISTANCE RAN
     }
