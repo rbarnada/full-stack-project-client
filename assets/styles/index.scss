@@ -4,14 +4,33 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 body {
   font-family: 'Ubuntu', sans-serif;
+  // background-color: #fecaac;
 
-  &.home {
-    background-image: url('../../public/background.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-  }
+  // &.home {
+  //   background-image: url('../../public/background.jpg');
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-position: center;
+  //   height: 100vh;
+  // }
+}
+
+.body-image {
+  background-image: url('../../public/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  top: 0;
+}
+
+.color-change {
+  background-color: white;
+  height: 100vh;
+  box-shadow: 0 0 1.5rem grey;
 }
 
 .welcome {
@@ -60,7 +79,8 @@ body {
 }
 
 .body-content {
-  margin-top: 130px;
+  margin-top: 120px;
+  padding: 0 25px;
 }
 
 .delete-div {
@@ -75,7 +95,7 @@ body {
   padding-left: 10px;
   margin-left: 15px;
   margin-bottom: 10px;
-  // margin-right: 10px;
+  margin-right: 10px;
 }
 
 .input-group {

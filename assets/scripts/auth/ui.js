@@ -46,6 +46,7 @@ const signInSuccess = function (data) {
   $('body').removeClass('home')
   $('.welcome').addClass('hidden')
   $('.welcome-two').addClass('hidden')
+  $('.container-color').addClass('color-change')
   // Form validation for time fields
   const time = document.getElementsByClassName('time')
   for (let i = 0; i < time.length; i++) {
@@ -129,6 +130,7 @@ const signOutSuccess = function (data) {
   $('#tab-nav').addClass('hidden')
   $('.welcome').removeClass('hidden')
   $('.welcome-two').removeClass('hidden')
+  $('.container-color').removeClass('color-change')
 }
 
 const signOutFailure = function (data) {
