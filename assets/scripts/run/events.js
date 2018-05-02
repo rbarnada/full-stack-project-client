@@ -26,6 +26,7 @@ const onIndexRuns = function (event) {
   // console.log('button pressed')
   api.indexRuns()
     .then(ui.indexRunsSuccess)
+    // .then(ui.statsData)
     .catch(ui.indexRunsFailure)
 }
 
@@ -59,11 +60,16 @@ const onUpdateRun = function (event) {
   $('#add-run')[0].reset()
 }
 
+// const onStatsDisplay = function () {
+//   console.log(store.updateId)
+// }
+
 const addHandlers = function () {
   $('#add-run').on('submit', onAddRun)
   $('#view-runs-tab').on('click', onIndexRuns)
   $('#run-display').on('submit', '.delete-run', onDeleteRun)
   $('#update-run').on('submit', onUpdateRun)
+  // $('#stats-tab').on('click', onStatsDisplay)
 }
 
 module.exports = {

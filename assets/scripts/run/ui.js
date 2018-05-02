@@ -1,4 +1,6 @@
 const store = require('../store')
+const { add } = require('timelite/time')
+// const { str } = require('timelite/time')
 
 const addRunSuccess = function (data) {
   // console.log('successful signup')
@@ -50,9 +52,76 @@ const indexRunsSuccess = function (data) {
     // console.log(runUpdate)
     })
   }
-  // console.log(data.runs.forEach())
+
+  // ALL STATS DATA
+  const statsData = function (data) {
+    // STATS PAGE INFO
+    if (data.runs.length > 0) {
+    // console.log(data.runs)
+      console.log(data.runs)
+      // TOTAL RUNS
+      console.log(`Total Runs: ${data.runs.length}`)
+
+      // TOTAL DISTANCE RAN
+      // PULL DISTANCE VALUES FROM OBJECTS AND PUSH TO ARRAY
+      const distanceArray = []
+      const getDistance = function () {
+        data.runs.forEach(function (run) {
+          distanceArray.push(run.distance)
+        })
+      }
+      getDistance()
+      console.log(distanceArray)
+
+      // GETS TOTAL DISTANCE BY ADDING ARRAY VALUES
+      console.log(distanceArray.reduce(function (acc, val) {
+        return acc + val
+      }))
+
+      // GETS LONGEST DISTANCE
+      const longest = distanceArray.reduce(function (acc, val) {
+        return Math.max(acc, val)
+      })
+      console.log(`Longest run is ${longest} miles`)
+
+      // GETS SHORTEST DISTANCE
+      const shortest = distanceArray.reduce(function (acc, val) {
+        return Math.min(acc, val)
+      })
+      console.log(`Shortest run is ${shortest} miles`)
+
+      // PULL TIME VALUES FROM OBJECTS AND PUSH TO ARRAY
+      const timeArray = []
+      const getTime = function () {
+        data.runs.forEach(function (run) {
+          timeArray.push(run.time)
+        })
+      }
+      getTime()
+      console.log(timeArray)
+
+      // ADD ALL TIMES (WORKS BUT GIVES HH:MM:SS AS SEPARATE ARRAY VALUES)
+      // STR DOES NOT ALLOW FOR 3RD HOUR SPOT. MAY NEED TO WRITE MY OWN
+      const addedTime = add(timeArray)
+
+      const prependZero = function () {
+        if (addedTime[2] <= 9) {
+          console.log('true')
+          console.log(addedTime[2] = '0' + addedTime[2])
+        }
+      }
+      prependZero()
+
+      console.log(addedTime)
+      const addedTimeString = addedTime.toString()
+      // console.log(addedTimeString)
+      console.log(addedTimeString.replace(/,/g, ':'))
+      // console.log(typeof addedTimeString)
+      // END TOTAL DISTANCE RAN
+    }
+  }
+  statsData(data)
 }
-// console.log(data.runs)
 
 const indexRunsFailure = function (data) {
   $('#status-message').text('An issue occured when getting runs')
@@ -104,5 +173,6 @@ module.exports = {
   updateRunFailure,
   deleteRunSuccess,
   deleteRunFailure
+  // statsData
 
 }

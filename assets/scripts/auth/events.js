@@ -10,11 +10,18 @@ const onSignUp = function (event) {
   const data = getFormFields(event.target)
   api.signUp(data)
     .then(ui.signUpSuccess)
+    .then(() => autoSignIn(data))
     .catch(ui.signUpFailure)
 
   // Refactor into function in UI
   $('#sign-up')[0].reset()
   $('#sign-in')[0].reset()
+}
+
+const autoSignIn = function (data) {
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
 }
 
 const onSignIn = function (event) {
