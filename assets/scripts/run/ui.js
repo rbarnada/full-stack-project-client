@@ -80,21 +80,25 @@ const indexRunsSuccess = function (data) {
         return acc + val
       })
       console.log(totalDistance)
-      $('#stat-display').append(`<p>Total Miles Ran: ${totalDistance}</p>`)
+      $('#stat-display').append(`
+        <p>Total Miles Ran: ${totalDistance}</p>
+        `)
 
       // GETS LONGEST DISTANCE
       const longest = distanceArray.reduce(function (acc, val) {
         return Math.max(acc, val)
       })
       console.log(`Longest run is ${longest} miles`)
-      $('#stat-display').append(`<p>Longest Run: ${longest} miles</p>`)
+      $('#stat-display').append(`
+        <p>Longest Run: ${longest} miles</p>
+        `)
 
       // GETS SHORTEST DISTANCE
       const shortest = distanceArray.reduce(function (acc, val) {
         return Math.min(acc, val)
       })
       console.log(`Shortest run is ${shortest} miles`)
-      $('#stat-display').append(`<p>Shortest Run: ${shortest} miles</p>`)
+      $('#stat-display').append(`<p>Shortest Run: ${shortest} mile(s)</p>`)
 
       // PULL TIME VALUES FROM OBJECTS AND PUSH TO ARRAY
       const timeArray = []
