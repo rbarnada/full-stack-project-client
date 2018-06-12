@@ -5,6 +5,7 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 
+// JS for HTML tooltips
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
@@ -55,15 +56,13 @@ const onUpdateRun = function (event) {
   api.updateRun(data)
     .then(ui.updateRunSuccess)
     .catch(ui.updateRunFailure)
+
+  // ON SUCCESS OF FAIL, CLEARS DISTANCE AND DURATION BUT LEAVES HIDDEN ID
   $('#update-run').on('submit', function (e) {
     $('#run-update-distance, #run-update-duration').val('')
   })
   $('#add-run')[0].reset()
 }
-
-// const onStatsDisplay = function () {
-//   console.log(store.updateId)
-// }
 
 const addHandlers = function () {
   $('#add-run').on('submit', onAddRun)

@@ -1,9 +1,9 @@
 const store = require('../store')
 const { add } = require('timelite/time')
-// const { str } = require('timelite/time')
 
 const addRunSuccess = function (data) {
   // console.log('successful signup')
+  // GO TO ALL RUNS AFTER SUBMITTING NEW RUN?
   // $('#index-run').click()
   $('#status-message').text('Successfully added run')
   $('#status-message').css('background-color', '#E0F0D9')
@@ -18,6 +18,7 @@ const addRunFailure = function (data) {
 }
 
 const indexRunsSuccess = function (data) {
+  // re-sorts runs so most recent is display first
   const sorted = data.runs.sort(function (a, b) {
     return b.id - a.id
   })
@@ -26,6 +27,7 @@ const indexRunsSuccess = function (data) {
     $('#run-display').append(`No runs logged yet`)
   } else {
     sorted.forEach(function (loop) {
+      // adds run data onto the all runs page
       $('#run-display').append(`
     <div id='run${loop.id}' class='delete-div'>
     <h5><strong>Date Logged:</strong> ${loop.log_date}</h5>
@@ -45,6 +47,8 @@ const indexRunsSuccess = function (data) {
     </div>
   `)
     })
+
+    // passes data id to the id field for updating run
     $('.update-button').on('click', function (event) {
     // console.log(event.target)
       const runUpdate = $(event.target).attr('data-id')
@@ -56,9 +60,13 @@ const indexRunsSuccess = function (data) {
   // ALL STATS DATA
   const statsData = function (data) {
     // STATS PAGE INFO
+    if (data.runs.length < 1) {
+      $('#stat-display').append('No runs logged yet')
+    }
+
     if (data.runs.length > 0) {
-    // console.log(data.runs)
       // console.log(data.runs)
+
       // TOTAL RUNS
       $('#stat-display').append(`
       <p>Total Runs: ${data.runs.length}</p>
@@ -111,24 +119,29 @@ const indexRunsSuccess = function (data) {
       console.log(timeArray)
 
       // ADD ALL TIMES (WORKS BUT GIVES HH:MM:SS AS SEPARATE ARRAY VALUES)
-      // STR DOES NOT ALLOW FOR 3RD HOUR SPOT. MAY NEED TO WRITE MY OWN
       const addedTime = add(timeArray)
 
+      // PREPENDS ZEROES IN SECONDS SPOT IF NUMBER IS BETWEEN 0-9
+      // I.E. 1 -> 01
       const prependZero = function () {
-        if (addedTime[2] <= 9) {
-          console.log('true')
-          console.log(addedTime[2] = '0' + addedTime[2])
+        for (let i = 0; i < addedTime.length; i++) {
+          if (addedTime[i] <= 9) {
+            console.log('true')
+            addedTime[i] = '0' + addedTime[i]
+            // addedTime[i] = '0' + addedTime[i]
+          }
         }
       }
-      prependZero()
 
+      prependZero()
       console.log(addedTime)
+
+      // TURNS ARRAY TO STRING AND REPLACES COMMAS WITH COLONS
       const addedTimeString = addedTime.toString()
       // console.log(addedTimeString)
       const normalizedTime = addedTimeString.replace(/,/g, ':')
-      console.log(normalizedTime)
+      // console.log(normalizedTime)
       $('#stat-display').append(`<p>Total Time Running: ${normalizedTime}</p>`)
-      // console.log(typeof addedTimeString)
       // END TOTAL DISTANCE RAN
     }
   }
@@ -145,6 +158,7 @@ const deleteRunSuccess = function (data) {
     this.remove()
   })
 
+// FUNCTION TO ADD TEXT IF LAST RUN IS DELETE (WAS BUGGY, NEEDS TO BE REEVALUTATED)
   // const anyRuns = function () {
   //   if ($('.delete-div').length === 1) {
   //     $('#run-display').append('No runs logged')
@@ -152,6 +166,7 @@ const deleteRunSuccess = function (data) {
   // }
   // setTimeout(anyRuns, 500)
 }
+
 const deleteRunFailure = function (data) {
   $('#status-message').text('An issue occurred when deleting runs')
   $('#status-message').css('background-color', '#F2DEDE')
@@ -162,11 +177,7 @@ const updateRunSuccess = function (data) {
   $('#status-message').css('background-color', '#E0F0D9')
   setTimeout(() => $('#status-message').text(''), 3000)
   $('.modal').modal('hide')
-  // const updateGreen = '#run' + data.run.id
-  // console.log(updateGreen)
-  // console.log(store.updateId)
   $('#view-runs-tab').click()
-  // setTimeout(() => $('#run' + data.run.id).css('background-color', 'cyan'), 0)
 }
 
 const updateRunFailure = function (data) {
@@ -185,6 +196,4 @@ module.exports = {
   updateRunFailure,
   deleteRunSuccess,
   deleteRunFailure
-  // statsData
-
 }
